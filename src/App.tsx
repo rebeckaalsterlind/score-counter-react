@@ -1,6 +1,7 @@
-import React, { Component } from "react"
-import Player from "./player"
-import NewPlayer from "./newPlayer"
+import React, { Component } from "react";
+import Header from './Header';
+import Player from './Player';
+import NewPlayer from "./newPlayer";
 import './App.css';
 
 
@@ -36,7 +37,7 @@ class App extends Component <Players, State> {
   
   };
 
-  saveNewPlayer = (newPlayer: any):void => {
+  saveNewPlayer = (newPlayer: Players):void => {
     const newPlayerList = this.state.players;
     newPlayerList.push(newPlayer);
     this.setState({players: newPlayerList});
@@ -44,16 +45,27 @@ class App extends Component <Players, State> {
 
   render() {
 
-    const playerList = this.state.players;
+    const playerList:Players[] = this.state.players;
     playerList.sort((a, b) => b.score - a.score);
 
     return (
       <div className="App">
-       <h1>Game score</h1>
-       {playerList.map((item, i) => 
-         <Player key={i} id={playerList[i].id} name={playerList[i].name} score={this.state.players[i].score} updateScore={this.updateScore} />
-        )}
-        <NewPlayer players={this.state.players} saveNewPlayer={this.saveNewPlayer}/>
+        <Header />
+        <main>
+          <NewPlayer players={this.state.players} saveNewPlayer={this.saveNewPlayer}/>
+          <section>
+            {playerList.map((item, i) => 
+              <Player 
+                key={i} 
+                id={playerList[i].id} 
+                name={playerList[i].name} 
+                score={this.state.players[i].score} 
+                updateScore={this.updateScore} />
+            )} 
+          </section>
+ 
+        </main>
+
       </div>
     );
 

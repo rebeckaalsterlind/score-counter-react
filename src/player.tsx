@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import './player.css';
 
 interface Props {
     key: number,
@@ -27,10 +28,11 @@ class Player extends Component <Props> {
     render() {
 
         return (
-            <h5>{this.props.name} | Score: {this.props.score}  <br />
-                <button id={this.props.id.toString()} onClick={this.changeScore}>-</button> 
-                <button id={this.props.id.toString()} onClick={this.changeScore}>+</button> 
-            </h5>
+            <div className="player">
+                <h5 >{this.props.name.toUpperCase()} | Score: {this.props.score}</h5>
+                <button className="points" id={this.props.id.toString()} onClick={this.changeScore}>-</button> 
+                <button className="points" id={this.props.id.toString()} onClick={this.changeScore}>+</button> 
+            </div>
         )
     }
 }

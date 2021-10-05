@@ -1,0 +1,13 @@
+.newPlayer h3 {
+  margin: 1em;
+  color: grey;
+}
+
+.newPlayer input, .newPlayer button {
+  margin: .3em;
+}
+
+.newPlayer input {
+  border: none;
+  border-bottom: .5px solid rgb(163, 105, 105);
+}
